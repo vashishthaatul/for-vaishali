@@ -13,7 +13,7 @@ color:white;
 }
 
 section{
-height:100vh;
+min-height:100dvh;
 display:flex;
 flex-direction:column;
 justify-content:center;
@@ -37,13 +37,14 @@ color:white;
 }
 
 .slideshow{
-width:250px;
-height:250px;
+width:260px;
+height:260px;
 border-radius:20px;
 background-size:cover;
 background-position:center;
 margin-top:20px;
 box-shadow:0 0 25px rgba(255,255,255,0.6);
+transition:0.5s;
 }
 
 #proposalButtons{
@@ -99,13 +100,14 @@ I don’t know what future holds, but I know I want you in it.
 </div>
 </section><!-- CELEBRATION --><div id="celebration">
 <div>You Said YES 😭❤️</div>
-<div style="font-size:1.2rem;margin-top:15px;">You just made me the happiest person alive</div>
-<button onclick="shareWhatsApp()">Tell Everyone 😌</button>
+<div style="font-size:1.2rem;margin-top:15px;">Now say YES officially on WhatsApp 😌</div>
+<button onclick="sendWhatsAppYes()">Say Yes On WhatsApp 💬</button>
 </div><script>
 
 // MUSIC PLAY
+const music = document.getElementById("music");
 document.body.addEventListener("click",()=>{
-document.getElementById("music").play();
+music.play().catch(()=>{});
 },{once:true});
 
 // SCROLL FUNCTION
@@ -113,20 +115,31 @@ function scrollNext(){
 window.scrollBy({top:window.innerHeight,behavior:'smooth'});
 }
 
-// SLIDESHOW
-const photos=["photo1.jpg","photo2.jpg","photo3.jpg"];
+// SLIDESHOW (ADD AS MANY PHOTOS AS YOU WANT HERE)
+const photos=[
+"photo1.jpg",
+"photo2.jpg",
+"photo3.jpg",
+"photo4.jpg",
+"photo5.jpg",
+"photo6.jpg"
+];
+
 let p=0;
+const slideshow = document.getElementById("slideshow");
+
 function slide(){
-document.getElementById("slideshow").style.backgroundImage=`url(${photos[p]})`;
+slideshow.style.backgroundImage=`url(${photos[p]})`;
 p=(p+1)%photos.length;
 }
+
 slide();
 setInterval(slide,2500);
 
 // PROPOSAL BUTTONS
-let noBtn=document.getElementById("noBtn");
-let yesBtn=document.getElementById("yesBtn");
-let celebration=document.getElementById("celebration");
+const noBtn=document.getElementById("noBtn");
+const yesBtn=document.getElementById("yesBtn");
+const celebration=document.getElementById("celebration");
 
 let yesSize=1;
 let noCount=0;
@@ -138,7 +151,7 @@ const noMsgs=[
 "Last chance Vaishali 💕"
 ];
 
-noBtn.onclick=()=>{
+noBtn.addEventListener("click",()=>{
 alert(noMsgs[noCount%noMsgs.length]);
 noCount++;
 
@@ -148,16 +161,18 @@ noBtn.style.transform=`translate(${x}px,${y}px) scale(${1-noCount*0.08})`;
 
 yesSize+=0.2;
 yesBtn.style.transform=`scale(${yesSize})`;
-};
+});
 
 // YES CLICK
-yesBtn.onclick=()=>{
+yesBtn.addEventListener("click",()=>{
 celebration.classList.add("show");
-};
+});
 
-// WHATSAPP SHARE
-function shareWhatsApp(){
-window.open("https://wa.me/?text=She said YES ❤️");
+// WHATSAPP YES MESSAGE
+function sendWhatsAppYes(){
+const phoneNumber = "918384833836"; // PUT YOUR NUMBER HERE
+const message = encodeURIComponent("Yes Bandru, I will be your valentine. ☺️😚");
+window.open(`https://wa.me/${phoneNumber}?text=${message}`);
 }
 
 </script></body>
