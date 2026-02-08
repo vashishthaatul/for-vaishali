@@ -67,21 +67,23 @@ box-shadow:0 0 20px rgba(0,0,0,0.3);
 text-align:left;
 }
 
-.memoryPhoto{
-position:absolute;
-width:100px;
+/* Corner scrapbook photos (fixed, non overlapping) */
+.memoryCorner{
+position:fixed;
+width:110px;
 background:white;
 padding:5px;
 border-radius:6px;
 box-shadow:0 8px 15px rgba(0,0,0,0.4);
+z-index:1;
 }
 
-.memoryPhoto img{width:100%;border-radius:4px;}
+.memoryCorner img{width:100%;border-radius:4px;}
 
-.photoTopLeft{top:-40px;left:-20px;transform:rotate(-10deg);}
-.photoTopRight{top:-40px;right:-20px;transform:rotate(8deg);}
-.photoBottomLeft{bottom:-40px;left:-20px;transform:rotate(6deg);}
-.photoBottomRight{bottom:-40px;right:-20px;transform:rotate(-6deg);}
+.cornerTopLeft{top:20px;left:15px;transform:rotate(-10deg);} 
+.cornerTopRight{top:20px;right:15px;transform:rotate(8deg);} 
+.cornerBottomLeft{bottom:20px;left:15px;transform:rotate(6deg);} 
+.cornerBottomRight{bottom:20px;right:15px;transform:rotate(-6deg);}
 
 /* Letter Card */
 .loveCard{
@@ -117,11 +119,11 @@ box-shadow:0 10px 30px rgba(0,0,0,0.4);transform:rotate(-3deg);}
 </div>
 <button onclick="nextPage()">Continue 💕</button>
 </div><!-- Page 3 Timeline --><div class="page" id="page3">
-<h2>Our Memory Timeline ❤️</h2>
-<div class="timelineWrapper"><div class="memoryPhoto photoTopLeft"><img src="timeline1.jpg"></div>
-<div class="memoryPhoto photoTopRight"><img src="timeline2.jpg"></div>
-<div class="memoryPhoto photoBottomLeft"><img src="timeline3.jpg"></div>
-<div class="memoryPhoto photoBottomRight"><img src="timeline4.jpg"></div><div class="timelineCard">
+<h2>Our Memory Timeline ❤️</h2><!-- Fixed corner scrapbook photos --><img src="timeline1.jpg" class="memoryCorner cornerTopLeft">
+<img src="timeline2.jpg" class="memoryCorner cornerTopRight">
+<img src="timeline3.jpg" class="memoryCorner cornerBottomLeft">
+<img src="timeline4.jpg" class="memoryCorner cornerBottomRight"><div class="timelineWrapper">
+<div class="timelineCard">
 <p>✨ First meet - 11 October</p>
 <p>✨ First long chat - 18 October</p>
 <p>✨ First outing - Kyarki (Not successful) - 26 October</p>
@@ -130,8 +132,8 @@ box-shadow:0 10px 30px rgba(0,0,0,0.4);transform:rotate(-3deg);}
 <p>✨ First Proposal - 5 January</p>
 <p>✨ Favorite Memory - Walking in Robber's Cave Holding hands 😊</p>
 </div>
-</div>
-<button onclick="nextPage()">Continue ❤️</button>
+</div><button onclick="nextPage()">Continue ❤️</button>
+
 </div><!-- Page 4 --><div class="page" id="page4">
 <h2>A Letter For You 💌</h2>
 <div class="loveCard">
