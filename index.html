@@ -75,7 +75,8 @@ background:white;
 padding:5px;
 border-radius:6px;
 box-shadow:0 8px 15px rgba(0,0,0,0.4);
-z-index:1;
+z-index:0; /* Put behind text and buttons */
+pointer-events:none; /* Prevent blocking clicks */
 }
 
 .memoryCorner img{width:100%;border-radius:4px;}
@@ -119,10 +120,10 @@ box-shadow:0 10px 30px rgba(0,0,0,0.4);transform:rotate(-3deg);}
 </div>
 <button onclick="nextPage()">Continue 💕</button>
 </div><!-- Page 3 Timeline --><div class="page" id="page3">
-<h2>Our Memory Timeline ❤️</h2><!-- Fixed corner scrapbook photos --><img src="timeline1.jpg" class="memoryCorner cornerTopLeft">
+<h2 style="margin-bottom:20px; z-index:2; position:relative;">Our Memory Timeline ❤️</h2><!-- Corner scrapbook photos --><img src="timeline1.jpg" class="memoryCorner cornerTopLeft">
 <img src="timeline2.jpg" class="memoryCorner cornerTopRight">
 <img src="timeline3.jpg" class="memoryCorner cornerBottomLeft">
-<img src="timeline4.jpg" class="memoryCorner cornerBottomRight"><div class="timelineWrapper">
+<img src="timeline4.jpg" class="memoryCorner cornerBottomRight"><div class="timelineWrapper" style="z-index:2; position:relative;">
 <div class="timelineCard">
 <p>✨ First meet - 11 October</p>
 <p>✨ First long chat - 18 October</p>
@@ -132,7 +133,7 @@ box-shadow:0 10px 30px rgba(0,0,0,0.4);transform:rotate(-3deg);}
 <p>✨ First Proposal - 5 January</p>
 <p>✨ Favorite Memory - Walking in Robber's Cave Holding hands 😊</p>
 </div>
-</div><button onclick="nextPage()">Continue ❤️</button>
+</div><button onclick="nextPage()" style="z-index:2; position:relative;">Continue ❤️</button>
 
 </div><!-- Page 4 --><div class="page" id="page4">
 <h2>A Letter For You 💌</h2>
