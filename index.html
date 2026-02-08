@@ -3,7 +3,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Our Love Story ❤️</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet"><style>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;600&display=swap" rel="stylesheet"><style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Poppins;}
 
 body{
@@ -22,6 +22,17 @@ padding:20px;
 text-align:center;
 }
 
+.heroTitle{
+font-family:Pacifico;
+font-size:3rem;
+animation:fadeSlide 2s ease;
+}
+
+@keyframes fadeSlide{
+from{opacity:0; transform:translateY(40px);} 
+to{opacity:1; transform:translateY(0);} 
+}
+
 button{
 padding:14px 30px;
 border:none;
@@ -31,6 +42,15 @@ cursor:pointer;
 margin-top:25px;
 background:#ff2e88;
 color:white;
+box-shadow:0 0 15px #ff2e88;
+}
+
+/* Slideshow frame */
+.slideshowFrame{
+padding:10px;
+border-radius:25px;
+background: linear-gradient(45deg,#ffb6d5,#fff);
+box-shadow:0 0 30px rgba(255,255,255,0.6);
 }
 
 .slideshow{
@@ -39,8 +59,18 @@ height:260px;
 border-radius:20px;
 background-size:cover;
 background-position:center;
-margin-top:20px;
-box-shadow:0 0 25px rgba(255,255,255,0.6);
+}
+
+/* Letter Card */
+.loveCard{
+background:white;
+color:#ff2e88;
+padding:30px;
+border-radius:25px;
+max-width:350px;
+box-shadow:0 0 30px rgba(0,0,0,0.3);
+font-family:Pacifico;
+line-height:1.6;
 }
 
 .videoBox{
@@ -50,23 +80,23 @@ border-radius:15px;
 display:none;
 }
 
-.videoBox.show{
-display:block;
-animation:fadeIn 0.5s ease;
-}
+.videoBox.show{display:block;animation:fadeIn 0.5s ease;}
 
-@keyframes fadeIn{
-from{opacity:0;transform:scale(0.8);} 
-to{opacity:1;transform:scale(1);} 
-}
+@keyframes fadeIn{from{opacity:0; transform:scale(0.8);} to{opacity:1; transform:scale(1);}}
 
-#proposalButtons{
-position:relative;
-height:150px;
-}
-
+#proposalButtons{position:relative;height:150px;}
 #yesBtn{position:absolute;left:25%;}
 #noBtn{position:absolute;right:25%;background:#ff5f6d;}
+
+/* Celebration card */
+.celebrationCard{
+background:white;
+color:#ff2e88;
+padding:35px;
+border-radius:30px;
+box-shadow:0 0 40px rgba(255,255,255,0.7);
+text-align:center;
+}
 
 #celebration{
 position:fixed;
@@ -79,7 +109,6 @@ display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-font-size:2rem;
 opacity:0;
 pointer-events:none;
 transition:1s;
@@ -87,56 +116,38 @@ transition:1s;
 
 #celebration.show{opacity:1;pointer-events:auto;}
 
-#calculatingScreen{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:black;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-font-size:1.5rem;
-opacity:0;
-pointer-events:none;
-transition:0.5s;
+.highlightBtn{
+background:#25D366;
+box-shadow:0 0 25px #25D366;
+animation:pulse 1.5s infinite;
 }
 
-#calculatingScreen.show{
-opacity:1;
-pointer-events:auto;
+@keyframes pulse{
+0%{transform:scale(1);} 
+50%{transform:scale(1.1);} 
+100%{transform:scale(1);} 
 }
 
-.heartRain{
-position:fixed;
-top:-20px;
-font-size:24px;
-animation:fall 4s linear forwards;
-}
-
-@keyframes fall{
-to{transform:translateY(110vh);opacity:0;}
-}
-
-</style></head><body><audio id="music" src="song.mp3" loop></audio> <audio id="celebrationSound" src="celebration.mp3"></audio>
+</style></head><body><audio id="music" src="song.mp3" loop></audio>
 
 <section>
-<h1>Hi Vaishali ❤️</h1>
-<p>I made something special for you. This is our little journey...</p>
-<button onclick="scrollNext()">Start Journey ✨</button>
+<h1 class="heroTitle">For My Leelu ❤️</h1>
+<p>This is not just a website... it's my heart for you.</p>
+<button onclick="scrollNext()">Begin Our Story ✨</button>
 </section><section>
 <h1>Our Beautiful Memories 📸</h1>
+<div class="slideshowFrame">
 <div class="slideshow" id="slideshow"></div>
+</div>
 <button onclick="scrollNext()">Continue 💕</button>
 </section><section>
 <h1>A Letter For You 💌</h1>
-<p>
-Vaishali, from the day you entered my life, everything changed.
-You make my bad days better and good days unforgettable.
-I don’t know what future holds, but I know I want you in it.
-</p>
+<div class="loveCard">
+Vaishali, from the day you entered my life, everything changed. 
+You make my bad days better and good days unforgettable. 
+No matter how many times we fight, I am never going to stop loving you. 
+I will never give up on us. I will love you forever 😊💝
+</div>
 <button onclick="scrollNext()">One Last Thing ❤️</button>
 </section><section>
 <h1>Will You Be My Valentine? 💖</h1>
@@ -147,82 +158,48 @@ I don’t know what future holds, but I know I want you in it.
 </div><video id="noVideo" class="videoBox" muted loop></video>
 
 </section><div id="celebration">
-<div id="yesText">You Said YES 😭❤️</div><video id="yesVideo" class="videoBox" src="yes.mp4" autoplay loop muted></video>
-
-<div style="font-size:1.2rem;margin-top:15px;">Now say YES officially on WhatsApp 😌</div>
-<button onclick="sendWhatsAppYes()">Say Yes On WhatsApp 💬</button>
-</div><div id="calculatingScreen">
-<p id="calcText">Calculating Vaishali's feelings...</p>
+<div class="celebrationCard">
+<h2 id="yesText">Shukriya Leelu Yes bolne k liye 😊</h2>
+<video id="yesVideo" class="videoBox" src="yes.mp4" autoplay loop muted></video>
+<p>You just made me the happiest person alive ❤️</p>
+<button class="highlightBtn" onclick="sendWhatsAppYes()">Say Yes On WhatsApp 💬</button>
+</div>
 </div><script>
 
-const music = document.getElementById("music");
-const celebrationSound = document.getElementById("celebrationSound");
+const music=document.getElementById("music");
+document.body.addEventListener("click",()=>{music.play().catch(()=>{});},{once:true});
 
-document.body.addEventListener("click",()=>{
-music.play().catch(()=>{});
-},{once:true});
-
-function scrollNext(){
-window.scrollBy({top:window.innerHeight,behavior:'smooth'});
-}
+function scrollNext(){window.scrollBy({top:window.innerHeight,behavior:'smooth'});} 
 
 const photos=["photo1.jpg","photo2.jpg","photo3.jpg","photo4.jpg","photo5.jpg"];
 let p=0;
-const slideshow = document.getElementById("slideshow");
+const slideshow=document.getElementById("slideshow");
 
-function slide(){
-slideshow.style.backgroundImage=`url(${photos[p]})`;
-p=(p+1)%photos.length;
-}
-slide();
-setInterval(slide,2500);
+function slide(){slideshow.style.backgroundImage=`url(${photos[p]})`;p=(p+1)%photos.length;} 
+slide();setInterval(slide,2500);
 
 const noBtn=document.getElementById("noBtn");
 const yesBtn=document.getElementById("yesBtn");
 const celebration=document.getElementById("celebration");
 const noVideo=document.getElementById("noVideo");
-const yesVideo=document.getElementById("yesVideo");
 const reactionText=document.getElementById("reactionText");
-const calculatingScreen=document.getElementById("calculatingScreen");
-const calcText=document.getElementById("calcText");
-const yesText=document.getElementById("yesText");
 
 const noVideos=["no1.mp4","no2.mp4","no3.mp4"];
-
 const noMessages=[
 "Please think again 🥺",
-"You are breaking my heart 🥺"
+"You are breaking my heart 🥺",
+"Leelu please mat kr aisa 🥺",
+"Yrr itte bhi kya nkhre kr rhi ho,,, Haan bol do na 😭"
 ];
 
 let yesSize=1;
 let noCount=0;
 
 noBtn.addEventListener("click",()=>{
-
-reactionText.innerText = noMessages[noCount % noMessages.length];
-
-noVideo.src = noVideos[noCount % noVideos.length];
+reactionText.innerText=noMessages[noCount%noMessages.length];
+noVideo.src=noVideos[noCount%noVideos.length];
 noVideo.classList.add("show");
 noVideo.play();
-
-noCount++;
-
-// Fake calculating screen after 3 NO clicks
-if(noCount === 3){
-calculatingScreen.classList.add("show");
-
-setTimeout(()=>{
-calcText.innerText = "Analyzing Vaishali's heart...";
-},1500);
-
-setTimeout(()=>{
-calcText.innerText = "Result: She secretly loves you 😌";
-},3000);
-
-setTimeout(()=>{
-calculatingScreen.classList.remove("show");
-},5000);
-}
 
 let x=Math.random()*250-125;
 let y=Math.random()*150-75;
@@ -230,39 +207,19 @@ noBtn.style.transform=`translate(${x}px,${y}px) scale(${1-noCount*0.08})`;
 
 yesSize+=0.2;
 yesBtn.style.transform=`scale(${yesSize})`;
+
+noCount++;
 });
 
 yesBtn.addEventListener("click",()=>{
 celebration.classList.add("show");
-yesVideo.classList.add("show");
-yesVideo.play();
-
-yesText.innerText = "Shukriya Leelu Yes bolne k liye 😊. I knew you would definitely say yes";
-
-celebrationSound.currentTime = 0;
-celebrationSound.play().catch(()=>{});
-
-startHeartRain();
 });
 
-function startHeartRain(){
-for(let i=0;i<40;i++){
-let heart=document.createElement("div");
-heart.innerHTML="❤️";
-heart.className="heartRain";
-heart.style.left=Math.random()*100+"vw";
-heart.style.animationDuration=(Math.random()*2+2)+"s";
-document.body.appendChild(heart);
-
-setTimeout(()=>heart.remove(),4000);
-}
-}
-
 function sendWhatsAppYes(){
-const phoneNumber = "918384833836";
-const message = encodeURIComponent("Yes Bandru, I will be your valentine. ☺️😚");
+const phoneNumber="918384833836";
+const message=encodeURIComponent("Yes Bandru, I will be your valentine. ☺️😚");
 window.open(`https://wa.me/${phoneNumber}?text=${message}`);
 }
 
 </script></body>
-  </html>
+</html>
