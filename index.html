@@ -12,7 +12,24 @@ overflow-x:hidden;
 color:white;
 }
 
-/* Soft Floating Hearts Background */
+/* Sparkle Background */
+.sparkle{
+position:fixed;
+width:6px;
+height:6px;
+background:white;
+border-radius:50%;
+opacity:0.7;
+animation:sparkleFloat 5s linear forwards;
+pointer-events:none;
+}
+
+@keyframes sparkleFloat{
+from{transform:translateY(100vh);} 
+to{transform:translateY(-10vh); opacity:0;} 
+}
+
+/* Floating Hearts */
 .heartBg{
 position:fixed;
 font-size:20px;
@@ -26,7 +43,6 @@ from{transform:translateY(100vh);}
 to{transform:translateY(-10vh); opacity:0;} 
 }
 
-/* Section Fade Transition */
 section{
 min-height:100dvh;
 display:flex;
@@ -40,21 +56,9 @@ transform:translateY(30px);
 transition:1s;
 }
 
-section.visible{
-opacity:1;
-transform:translateY(0);
-}
+section.visible{opacity:1;transform:translateY(0);} 
 
-.heroTitle{
-font-family:Pacifico;
-font-size:3rem;
-animation:fadeSlide 2s ease;
-}
-
-@keyframes fadeSlide{
-from{opacity:0; transform:translateY(40px);} 
-to{opacity:1; transform:translateY(0);} 
-}
+.heroTitle{font-family:Pacifico;font-size:3rem;}
 
 button{
 padding:14px 30px;
@@ -68,6 +72,7 @@ color:white;
 box-shadow:0 0 15px #ff2e88;
 }
 
+/* Slideshow */
 .slideshowFrame{
 padding:10px;
 border-radius:25px;
@@ -76,94 +81,86 @@ box-shadow:0 0 30px rgba(255,255,255,0.6);
 }
 
 .slideshow{
-width:260px;
-height:260px;
-border-radius:20px;
-background-size:cover;
-background-position:center;
+width:260px;height:260px;border-radius:20px;background-size:cover;background-position:center;
 }
 
+/* Letter Card */
 .loveCard{
-background:white;
-color:#ff2e88;
-padding:30px;
-border-radius:25px;
-max-width:350px;
-box-shadow:0 0 30px rgba(0,0,0,0.3);
-font-family:Pacifico;
-line-height:1.6;
+background:white;color:#ff2e88;padding:30px;border-radius:25px;max-width:350px;
+box-shadow:0 0 30px rgba(0,0,0,0.3);font-family:Pacifico;line-height:1.6;
 }
 
-/* Timeline Card */
+/* Timeline */
+.timelineWrapper{position:relative;background:url('paper-texture.png');padding:20px;border-radius:25px;}
+
 .timelineCard{
-background:white;
-color:#ff2e88;
-padding:30px;
-border-radius:25px;
-max-width:360px;
-box-shadow:0 0 30px rgba(0,0,0,0.3);
-text-align:left;
+background:white;color:#ff2e88;padding:30px;border-radius:25px;max-width:360px;
+box-shadow:0 0 30px rgba(0,0,0,0.3);text-align:left;z-index:2;position:relative;
 }
 
-.timelineCard p{
-margin:8px 0;
+.timelineCard p{margin:8px 0;}
+
+/* Polaroid Photo Style */
+.memoryPhoto{
+position:absolute;width:120px;background:white;padding:6px;border-radius:6px;
+box-shadow:0 10px 20px rgba(0,0,0,0.4);
+animation:photoFloat 5s ease-in-out infinite alternate;
 }
 
-.videoBox{
-margin-top:20px;
-max-width:260px;
-border-radius:15px;
-display:none;
+.memoryPhoto img{width:100%;border-radius:4px;}
+
+.memoryPhoto::before{
+content:"";position:absolute;top:-12px;left:35%;width:45px;height:18px;
+background:#fff;border-radius:4px;opacity:0.8;transform:rotate(-8deg);
+box-shadow:0 2px 4px rgba(0,0,0,0.2);
 }
 
+@keyframes photoFloat{
+from{transform:translateY(0px) rotate(var(--rotate));}
+to{transform:translateY(-6px) rotate(var(--rotate));}
+}
+
+.photoTopLeft{top:-70px;left:-100px;--rotate:-12deg;}
+.photoTopRight{top:-70px;right:-100px;--rotate:10deg;}
+.photoBottomLeft{bottom:-80px;left:-100px;--rotate:8deg;}
+.photoBottomRight{bottom:-80px;right:-100px;--rotate:-8deg;}
+
+/* Video */
+.videoBox{margin-top:20px;max-width:260px;border-radius:15px;display:none;}
 .videoBox.show{display:block;animation:fadeIn 0.5s ease;}
 
-@keyframes fadeIn{from{opacity:0; transform:scale(0.8);} to{opacity:1; transform:scale(1);}}
+@keyframes fadeIn{from{opacity:0;transform:scale(0.8);}to{opacity:1;transform:scale(1);}}
 
 #proposalButtons{position:relative;height:150px;}
 #yesBtn{position:absolute;left:25%;}
 #noBtn{position:absolute;right:25%;background:#ff5f6d;}
 
-.celebrationCard{
-background:white;
-color:#ff2e88;
-padding:35px;
-border-radius:30px;
-box-shadow:0 0 40px rgba(255,255,255,0.7);
-text-align:center;
+/* Polaroid Celebration Card */
+.polaroid{
+background:white;padding:15px;border-radius:6px;width:260px;color:#ff2e88;
+box-shadow:0 10px 30px rgba(0,0,0,0.4);transform:rotate(-3deg);
 }
 
+.polaroid video{width:100%;border-radius:4px;}
+.polaroidText{font-family:Pacifico;margin-top:8px;}
+
 #celebration{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
+position:fixed;top:0;left:0;width:100%;height:100%;
 background:radial-gradient(circle,#ff4da6,#ff0080);
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-opacity:0;
-pointer-events:none;
-transition:1s;
+display:flex;flex-direction:column;justify-content:center;align-items:center;
+opacity:0;pointer-events:none;transition:1s;
 }
 
 #celebration.show{opacity:1;pointer-events:auto;}
 
 .highlightBtn{
-background:#25D366;
-box-shadow:0 0 25px #25D366;
-animation:pulse 1.5s infinite;
+background:#25D366;box-shadow:0 0 25px #25D366;animation:pulse 1.5s infinite;
 }
 
 @keyframes pulse{
-0%{transform:scale(1);} 
-50%{transform:scale(1.1);} 
-100%{transform:scale(1);} 
-}
+0%{transform:scale(1);}50%{transform:scale(1.1);}100%{transform:scale(1);} }
 
-</style></head><body><audio id="music" src="song.mp3" loop></audio>
+</style></head><body><audio id="music" src="song.mp3" loop></audio> <audio id="celebrationMusic" src="celebration.mp3"></audio> <audio id="noSound" src="angry.mp3"></audio> <audio id="shutterSound" src="camera.mp3"></audio>
 
 <section>
 <h1 class="heroTitle">For My Leelu ❤️</h1>
@@ -177,7 +174,10 @@ animation:pulse 1.5s infinite;
 <button onclick="scrollNext()">Continue 💕</button>
 </section><section>
 <h1>Our Memory Timeline ❤️</h1>
-<div class="timelineCard">
+<div class="timelineWrapper"><div class="memoryPhoto photoTopLeft"><img src="timeline1.jpg"></div>
+<div class="memoryPhoto photoTopRight"><img src="timeline2.jpg"></div>
+<div class="memoryPhoto photoBottomLeft"><img src="timeline3.jpg"></div>
+<div class="memoryPhoto photoBottomRight"><img src="timeline4.jpg"></div><div class="timelineCard">
 <p>✨ First meet - 11 October</p>
 <p>✨ First long chat - 18 October</p>
 <p>✨ First outing - To Kyarki (Not successful) 26 October</p>
@@ -185,7 +185,7 @@ animation:pulse 1.5s infinite;
 <p>✨ First Night Out - 4th January</p>
 <p>✨ First Proposal - 5th January</p>
 <p>✨ Favorite Memory - Walking in Robber's Cave Holding hands 😊</p>
-</div>
+</div></div>
 <button onclick="scrollNext()">Continue ❤️</button>
 </section><section>
 <h1>A Letter For You 💌</h1>
@@ -205,26 +205,23 @@ I will never give up on us. I will love you forever 😊💝
 </div>
 <video id="noVideo" class="videoBox" muted loop></video>
 </section><div id="celebration">
-<div class="celebrationCard">
-<h2 id="yesText">Shukriya Leelu Yes bolne k liye 😊</h2>
-<video id="yesVideo" class="videoBox" src="yes.mp4" autoplay loop muted></video>
-<p>You just made me the happiest person alive ❤️</p>
-<button class="highlightBtn" onclick="sendWhatsAppYes()">Say Yes On WhatsApp 💬</button>
+<div class="polaroid">
+<video id="yesVideo" src="yes.mp4" autoplay loop muted></video>
+<div class="polaroidText">Shukriya Leelu Yes bolne k liye 😊❤️</div>
 </div>
+<button class="highlightBtn" onclick="sendWhatsAppYes()">Say Yes On WhatsApp 💬</button>
 </div><script>
 
-/* Soft Music Fade In */
-const music=document.getElementById("music");
-document.body.addEventListener("click",()=>{
-music.volume=0;
-music.play().catch(()=>{});
-let vol=0;
-let fade=setInterval(()=>{
-if(vol<1){vol+=0.05; music.volume=vol;} else clearInterval(fade);
-},200);
-},{once:true});
+/* Sparkles */
+setInterval(()=>{
+let s=document.createElement("div");
+s.className="sparkle";
+s.style.left=Math.random()*100+"vw";
+document.body.appendChild(s);
+setTimeout(()=>s.remove(),5000);
+},500);
 
-/* Floating Hearts Background */
+/* Floating hearts */
 setInterval(()=>{
 let heart=document.createElement("div");
 heart.innerHTML="❤️";
@@ -234,14 +231,18 @@ document.body.appendChild(heart);
 setTimeout(()=>heart.remove(),6000);
 },800);
 
-/* Section Visibility */
+/* Music Fade */
+const music=document.getElementById("music");
+document.body.addEventListener("click",()=>{
+music.volume=0;music.play().catch(()=>{});
+let v=0;let f=setInterval(()=>{v+=0.05;if(v>=1) clearInterval(f);music.volume=v;},200);
+},{once:true});
+
+/* Section animation */
 const sections=document.querySelectorAll("section");
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting) entry.target.classList.add("visible");
-});
-});
-sections.forEach(sec=>observer.observe(sec));
+const obs=new IntersectionObserver(e=>{
+e.forEach(x=>{if(x.isIntersecting) x.target.classList.add("visible");});});
+sections.forEach(s=>obs.observe(s));
 
 function scrollNext(){window.scrollBy({top:window.innerHeight,behavior:'smooth'});} 
 
@@ -249,52 +250,45 @@ function scrollNext(){window.scrollBy({top:window.innerHeight,behavior:'smooth'}
 const photos=["photo1.jpg","photo2.jpg","photo3.jpg","photo4.jpg","photo5.jpg"];
 let p=0;
 const slideshow=document.getElementById("slideshow");
-function slide(){slideshow.style.backgroundImage=`url(${photos[p]})`;p=(p+1)%photos.length;}
-slide();setInterval(slide,2500);
+function slide(){slideshow.style.backgroundImage=`url(${photos[p]})`;p=(p+1)%photos.length;} slide();setInterval(slide,2500);
 
-/* Proposal Logic */
+/* Proposal */
 const noBtn=document.getElementById("noBtn");
 const yesBtn=document.getElementById("yesBtn");
 const celebration=document.getElementById("celebration");
+const celebrationMusic=document.getElementById("celebrationMusic");
 const noVideo=document.getElementById("noVideo");
-const reactionText=document.getElementById("reactionText");
+const noSound=document.getElementById("noSound");
+const shutterSound=document.getElementById("shutterSound");
 
 const noVideos=["no1.mp4","no2.mp4","no3.mp4"];
-const noMessages=[
-"Please think again 🥺",
-"You are breaking my heart 🥺",
-"Leelu please mat kr aisa 🥺",
-"Yrr itte bhi kya nkhre kr rhi ho,,, Haan bol do na 😭"
-];
+const noMessages=["Please think again 🥺","You are breaking my heart 🥺","Leelu please mat kr aisa 🥺","Haan bol do na 😭"];
 
-let yesSize=1;
-let noCount=0;
+let yesSize=1,noCount=0;
 
 noBtn.addEventListener("click",()=>{
-reactionText.innerText=noMessages[noCount%noMessages.length];
+document.getElementById("reactionText").innerText=noMessages[noCount%noMessages.length];
 noVideo.src=noVideos[noCount%noVideos.length];
-noVideo.classList.add("show");
-noVideo.play();
+noVideo.classList.add("show");noVideo.play();
+noSound.currentTime=0;noSound.play();
 
 let x=Math.random()*250-125;
 let y=Math.random()*150-75;
 noBtn.style.transform=`translate(${x}px,${y}px) scale(${1-noCount*0.08})`;
 
-yesSize+=0.2;
-yesBtn.style.transform=`scale(${yesSize})`;
-
+yesSize+=0.2;yesBtn.style.transform=`scale(${yesSize})`;
 noCount++;
 });
 
 yesBtn.addEventListener("click",()=>{
 celebration.classList.add("show");
+celebrationMusic.currentTime=0;celebrationMusic.play();
+shutterSound.currentTime=0;shutterSound.play();
 });
 
 function sendWhatsAppYes(){
-const phoneNumber="918384833836";
-const message=encodeURIComponent("Yes Bandru, I will be your valentine. ☺️😚");
-window.open(`https://wa.me/${phoneNumber}?text=${message}`);
+window.open("https://wa.me/918384833836?text=Yes Bandru, I will be your valentine. ☺️😚");
 }
 
 </script></body>
-</html>
+  </html>
